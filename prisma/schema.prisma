@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+enum PaymentMethod {
+  EFECTIVO
+  TARJETA_DE_CREDITO
+  PAYPAL
+}
+
+model Sales {
+  id                 String           @id @default(auto()) @map("_id") @db.ObjectId
+  clientId           Int 
+  productId          Int
+  stock              Int
+  unitPrice          Int
+  total              Float     
+  saleDate           DateTime         @default(now())
+  paymentMethod      PaymentMethod 
+  deleted Boolean    @default(false)
+}
