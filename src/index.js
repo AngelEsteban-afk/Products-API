@@ -1,6 +1,7 @@
 import express from `express`;
 import morgan from "morgan";
 import cors from "cors";
+import salesRoutes from "./routes/sales.routes"
 
 const app = express();
 const PORT = process.env.PORT || 3000;
