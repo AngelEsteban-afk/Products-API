@@ -24,3 +24,4 @@ model Sales {
   paymentMethod      PaymentMethod 
   deleted Boolean    @default(false)
 }
+
