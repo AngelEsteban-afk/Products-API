@@ -1,4 +1,4 @@
-import { prisma } from "../db";
+import { prisma } from "../../db.js";
 
 export const getSales = async (req, res) => {
   try {
@@ -30,7 +30,7 @@ export const createSale = async (req, res) => {
   }
 };
 
-export const updateSale = async (req, res) => {
+export const updateSales = async (req, res) => {
   try {
     const { id, ...updateData } = req.body;
 
@@ -52,7 +52,7 @@ export const updateSale = async (req, res) => {
   }
 };
 
-export const deleteSale = async (req, res) => {
+export const deleteSales = async (req, res) => {
   try {
     const { id } = req.params;
 
