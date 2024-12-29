@@ -25,3 +25,10 @@ model Sales {
   deleted Boolean    @default(false)
 }
 
+model Client {
+  id           String            @id @default(auto()) @map("_id") @db.ObjectId
+  name         String?
+  email        String           @unique
+  phoneNumber  String?
+  deleted Boolean    @default(false)
+}

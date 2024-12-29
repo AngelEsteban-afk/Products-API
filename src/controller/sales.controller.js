@@ -90,3 +90,5 @@ export const deleteSales = async (req, res) => {
       .json({ error: "Error DELETE method", message: error.message });
   }
 };
+
+//
