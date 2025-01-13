@@ -30,5 +30,6 @@ model Client {
   name         String?
   email        String           @unique
   phoneNumber  String?
+  password     String
   deleted Boolean    @default(false)
 }

@@ -1,4 +1,5 @@
 import { prisma } from "../../db.js";
+import bcrypt from "bcrypt";
 
 // Obtener todos los clientes
 export const getClients = async (req, res) => {
@@ -33,15 +34,19 @@ export const getClient = async (req, res) => {
 // Crear un nuevo cliente
 export const createClient = async (req, res) => {
   try {
-    const { name, email } = req.body;
+    const { name, email, password } = req.body;
 
     // Validación básica de campos
-    if (!name || !email) {
-      return res.status(400).json({ error: "Name and email are required" });
+    if (!name || !email || !password) {
+      return res
+        .status(400)
+        .json({ error: "Name, email and password are required" });
     }
 
+    const hashedPassword = await bcrypt.hash(password, 10);
+
     const newClient = await prisma.client.create({
-      data: { name, email },
+      data: { name, email, password: hashedPassword },
     });
 
     res.status(201).json(newClient);
